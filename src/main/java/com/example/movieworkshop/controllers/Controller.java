@@ -48,11 +48,17 @@ public class Controller {
         return awardMovies;
     }
 
-    //3.6 - TODO
+    //3.6
     @GetMapping("/advancedFilter")
-    public void moviesWithCertainAmountOfLetters(@RequestParam char findLetter, @RequestParam int amount){}
+    public ArrayList<Movie> moviesWithCertainAmountOfLetters(@RequestParam char findLetter, @RequestParam int amount){
+        ArrayList<Movie> moviesWithSpecificLetters = service.getMoviesWithSpecificLetters(findLetter, amount);
+        return moviesWithSpecificLetters;
+    }
 
-    //3.7 - TODO
+    //3.7
     @GetMapping("/advancedLongest")
-    public void whichGenreWithLongestMovie(){}
+    public String whichGenreWithLongestMovie(@RequestParam String genre1, @RequestParam String genre2){
+        String longestMovie = service.genreWithLongestMovie(genre1, genre2);
+        return longestMovie;
+    }
 }
